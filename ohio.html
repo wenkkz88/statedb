@@ -74,12 +74,12 @@
                             // `data` option, which defaults to the column being worked with, in
                             // this case `data: 0`.
                             "render": function ( data, type, row ) {
-                                return "<a href='" + row[2] + "' target='_blank'>" + data + "</a>";
+                                return "<a href='" + row[1] + "' target='_blank'>" + data + "</a>";
 
                             },
-                            "targets": 1
+                            "targets": 0
                         },
-                        { "visible": false,  "targets": [ 2 ] },
+                        { "visible": false,  "targets": [ 1 ] },
                         //{"visible": false, "targets": 0}
                       ]
 
