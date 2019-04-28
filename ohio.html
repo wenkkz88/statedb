@@ -48,14 +48,43 @@
         else
           return "";
       }
-
+      /*function format_name(name){
+        if (name)
+          return "<a href='" + name + "' target='_blank'>" + row.name +"</a>";
+        else
+          return "";
+      }
+*/
       CsvToHtmlTable.init({
         csv_path: 'data/Ohio.csv',
         element: 'table-container',
         allow_download: false,
+
         csv_options: {separator: ',', delimiter: '"'},
-        datatables_options: {"paging": false,"ordering": true, "order": []},
-        custom_formatting: [[2, format_link]]
+        datatables_options: {"paging": false,
+            //"searching": false,
+            "ordering": true, "order": [],
+            "search": {
+                        //"search": 'Non-collegitate Chinese Schools'
+                      },
+
+            "columnDefs": [
+                        {
+                            // The `data` parameter refers to the data for the cell (defined by the
+                            // `data` option, which defaults to the column being worked with, in
+                            // this case `data: 0`.
+                            "render": function ( data, type, row ) {
+                                return "<a href='" + row[2] + "' target='_blank'>" + data + "</a>";
+
+                            },
+                            "targets": 1
+                        },
+                        { "visible": false,  "targets": [ 2 ] },
+                        //{"visible": false, "targets": 0}
+                      ]
+
+          },
+        //custom_formatting: [[2, format_link]]
       });
     </script>
   </body>
